@@ -1,27 +1,27 @@
 import textblob as tb
 
 
-def reformatText(text):
-    textList = text.split(' ')
-    for i in range(len(textList) - 1):
-        if textList[i] + ' ' + textList[i + 1] in formatDict:
-            textList.insert(i, formatDict[textList[i] + ' ' + textList[i + 1]])
-            textList.pop(i + 1)
-            textList.pop(i + 1)
-            textList.append('')
-    return ' '.join(textList)
+def reformat_text(text, format_dict):
+    text_list = text.split(' ')
+    for i in range(len(text_list) - 1):
+        if text_list[i] + ' ' + text_list[i + 1] in format_dict:
+            text_list.insert(i, format_dict[text_list[i] + ' ' + text_list[i + 1]])
+            text_list.pop(i + 1)
+            text_list.pop(i + 1)
+            text_list.append('')
+    return ' '.join(text_list)
 
 
-def makeFormatDict(rawInput):
-    tempDict = {}
-    lines = rawInput.split("\n")
+def make_format_dict(raw_input):
+    temp_dict = {}
+    lines = raw_input.split("\n")
     for line in lines:
-        dictEntry = line.split(":")
-        tempDict[dictEntry[0]] = dictEntry[1]
-    return tempDict
+        dict_entry = line.split(":")
+        temp_dict[dict_entry[0]] = dict_entry[1]
+    return temp_dict
 
 
-if __name__ == '__main__':
+def parse_data(text):
     actions = open("actions.txt", "r").read()
 
     recipients = open("recipients.txt", "r").read()
@@ -30,12 +30,13 @@ if __name__ == '__main__':
 
     throwables = open('throwables.txt', 'r').read()
 
-    formatRaw = open("format.txt", 'r').read()
+    format_raw = open("format.txt", 'r').read()
 
-    formatDict = makeFormatDict(formatRaw)
+    format_dict = make_format_dict(format_raw)
 
-    command = "I would like to throw a dagger at the skeleton"  # test command to be replaced by user entry
-    command = reformatText(command)
+    # command = "I would like to cast fire ball at the dragon"  # test command to be replaced by user entry
+    command = text
+    command = reformat_text(command, format_dict)
     blob = tb.TextBlob(command)
     print(blob.tags)
 
@@ -59,3 +60,5 @@ if __name__ == '__main__':
             continue
 
     print(action, action_classifier, recipient, parameter)
+
+    return[action, action_classifier, recipient, parameter]
