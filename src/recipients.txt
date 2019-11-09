@@ -1,0 +1,9 @@
+monster
+self
+myself
+me
+skeleton
+zombie
+troll
+giant
+dragon
