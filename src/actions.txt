@@ -1,0 +1,7 @@
+cast
+attack
+swing
+hit
+throw
+stab
+move

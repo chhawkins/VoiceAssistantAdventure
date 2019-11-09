@@ -1,0 +1,3 @@
+magic missile:magic-missile
+fire ball:fireball
+magic hand:magic-hand

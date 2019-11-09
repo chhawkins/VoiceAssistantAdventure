@@ -1,0 +1,6 @@
+dagger
+shuriken
+knife
+stone
+hatchet
+axe
