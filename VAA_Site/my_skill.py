@@ -29,18 +29,13 @@ class IntentRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
 
-        lda = lambda_handler(handler_input)
+        # lda = lambda_handler(handler_input)
 
         response = "Howdy neighbor"
         # response = lda["response"]
 
         #speech = "An interesting choice"
         speech = response
-
-
-
-        print("HANDLER INPUT PRINT\n:",handler_input)
-
 
         handler_input.response_builder.speak(speech).set_card(
             SimpleCard("Awesome", speech)).set_should_end_session(
@@ -52,7 +47,7 @@ class AllExceptionHandler(AbstractExceptionHandler):
         return True
 
     def handle(self, handler_input, exception):
-        speech = "Sorry I could not hear you"
+        speech = "Could you say that again?"
         handler_input.response_builder.speak(speech)
         return handler_input.response_builder.response
 
