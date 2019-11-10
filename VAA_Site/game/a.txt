@@ -1,2 +1,0 @@
-look:bookcase floor
-push:switch bookcase book
