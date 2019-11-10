@@ -14,8 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
+from django_ask_sdk.skill_adapter import SkillAdapter
+from .my_skill import skill
+
+my_skill_view = SkillAdapter.as_view(
+    skill=skill)
 
 urlpatterns = [
+    path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
+    path('/', my_skill_view),
 ]
