@@ -5,20 +5,22 @@ from ask_sdk_model.ui import SimpleCard
 from ask_sdk_core.dispatch_components import AbstractExceptionHandler
 from .parsing.lambda_function import lambda_handler
 
+
 class LaunchRequestHandler(AbstractRequestHandler):
     """Handler for skill launch."""
+
     def can_handle(self, handler_input):
         # if the request is LaunchRequest (the first one) then return true
         return is_request_type("LaunchRequest")(handler_input)
 
     def handle(self, handler_input):
-
         speech = "Welcome to Voice Assistant Adventure, I will be your dungeon master.\n" \
                  "You begin in a musty dungeon cellar, what do you do?"
         handler_input.response_builder.speak(speech).set_card(
             SimpleCard("Voice Assistant Adventure", speech)).set_should_end_session(
             False)
         return handler_input.response_builder.response
+
 
 class IntentRequestHandler(AbstractRequestHandler):
 
@@ -28,19 +30,21 @@ class IntentRequestHandler(AbstractRequestHandler):
         return is_request_type("IntentRequest")(handler_input)
 
     def handle(self, handler_input):
-
-        # lda = lambda_handler(handler_input)
+        '''# lda = lambda_handler(handler_input)
 
         # response = "Howdy neighbor"
         speech = "An interesting choice"
 
-        #speech = lda["response"]
+        # speech = lda["response"]
 
         handler_input.response_builder.speak(speech)
         handler_input.response_builder.set_card(SimpleCard("Awesome", speech))
         handler_input.response_builder.set_should_end_session(True)
 
-        return handler_input.response_builder.response
+        return handler_input.response_builder.response'''
+
+        return lambda_handler(handler_input)
+
 
 class AllExceptionHandler(AbstractExceptionHandler):
     def can_handle(self, handler_input, exception):
@@ -51,6 +55,7 @@ class AllExceptionHandler(AbstractExceptionHandler):
         handler_input.response_builder.speak(speech)
         handler_input.response_builder.set_should_end_session(False)
         return handler_input.response_builder.response
+
 
 sb = SkillBuilder()
 
