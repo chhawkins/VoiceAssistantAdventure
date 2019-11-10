@@ -1,5 +1,5 @@
 import os
-import VAA_Site.VAA_Site.wsgi as wsgi
+from VAA_Site import wsgi
 
 if __name__ == "__main__":
     os.system("manage.py runserver")

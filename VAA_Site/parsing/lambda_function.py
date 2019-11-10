@@ -1,7 +1,7 @@
 import parseData
 
 
-def lambda_handler(event, context):
+def lambda_handler(event):
     if event['session']['new']:
         on_session_started({'requestId': event['request']['requestId']}, event['session'])
     if event["request"]["type"] == "LaunchRequest":
