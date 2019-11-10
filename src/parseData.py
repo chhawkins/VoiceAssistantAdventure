@@ -49,7 +49,7 @@ def parse_data(text):
         if blob.tags[index][1] == 'NN' and blob.tags[index][0] in recipients:
             recipient = blob.tags[index][0]
             continue
-        if blob.tags[index][1] == 'VB' and blob.tags[index][0] in actions:
+        if (blob.tags[index][1] == 'VB' or blob.tags[index][1] == 'NN') and blob.tags[index][0] in actions:
             action = blob.tags[index][0]
             continue
         if action == 'cast' and blob.tags[index][1] == 'NN' and blob.tags[index][0] in castables:
@@ -62,3 +62,6 @@ def parse_data(text):
     print(action, action_classifier, recipient, parameter)
 
     return[action, action_classifier, recipient, parameter]
+
+
+print(parse_data("attack"))
