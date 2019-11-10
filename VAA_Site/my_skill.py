@@ -31,15 +31,15 @@ class IntentRequestHandler(AbstractRequestHandler):
 
         # lda = lambda_handler(handler_input)
 
-        response = "Howdy neighbor"
-        # response = lda["response"]
+        # response = "Howdy neighbor"
+        speech = "An interesting choice"
 
-        #speech = "An interesting choice"
-        speech = response
+        #speech = lda["response"]
 
-        handler_input.response_builder.speak(speech).set_card(
-            SimpleCard("Awesome", speech)).set_should_end_session(
-            True)
+        handler_input.response_builder.speak(speech)
+        handler_input.response_builder.set_card(SimpleCard("Awesome", speech))
+        handler_input.response_builder.set_should_end_session(True)
+
         return handler_input.response_builder.response
 
 class AllExceptionHandler(AbstractExceptionHandler):
@@ -49,6 +49,7 @@ class AllExceptionHandler(AbstractExceptionHandler):
     def handle(self, handler_input, exception):
         speech = "Could you say that again?"
         handler_input.response_builder.speak(speech)
+        handler_input.response_builder.set_should_end_session(False)
         return handler_input.response_builder.response
 
 sb = SkillBuilder()
