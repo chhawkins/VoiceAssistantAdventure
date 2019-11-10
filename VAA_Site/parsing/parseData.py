@@ -22,15 +22,15 @@ def make_format_dict(raw_input):
 
 
 def parse_data(text):
-    actions = open("./actions.txt", "r").read()
+    actions = open("VAA_Site/parsing/actions.txt", "r").read()
 
-    recipients = open("./recipients.txt", "r").read()
+    recipients = open("VAA_Site/parsing/recipients.txt", "r").read()
 
-    castables = open('./castables.txt', 'r').read()
+    castables = open('VAA_Site/parsing/castables.txt', 'r').read()
 
-    throwables = open('./throwables.txt', 'r').read()
+    throwables = open('VAA_Site/parsing/throwables.txt', 'r').read()
 
-    format_raw = open("./format.txt", 'r').read()
+    format_raw = open("VAA_Site/parsing/format.txt", 'r').read()
 
     format_dict = make_format_dict(format_raw)
 
@@ -60,6 +60,3 @@ def parse_data(text):
             continue
 
     return[action, action_classifier, recipient, parameter]
-
-
-print(parse_data("look around"))

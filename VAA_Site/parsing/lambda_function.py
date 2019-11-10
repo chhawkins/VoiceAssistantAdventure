@@ -14,15 +14,15 @@ def lambda_handler(event):
         return on_session_ended(event["request"], event["session"])
 
 
-def on_session_started(session_started_request, session):
+def on_session_started(session_started_request):
     print("Starting new session")
 
 
-def on_launch(launch_request, session):
+def on_launch(launch_request):
     return get_welcome_response()
 
 
-def on_intent(intent_request, session):
+def on_intent(intent_request):
     intent = intent_request["intent"]
     intent_name = intent_request["intent"]["name"]
 
@@ -36,7 +36,7 @@ def on_intent(intent_request, session):
         raise ValueError("Invalid intent")
 
 
-def on_session_ended(session_ended_request, session):
+def on_session_ended(session_ended_request):
     print("Ending session.")
     # Cleanup goes here...
 

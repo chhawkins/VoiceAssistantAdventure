@@ -3,7 +3,7 @@ from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.utils import is_request_type
 from ask_sdk_model.ui import SimpleCard
 from ask_sdk_core.dispatch_components import AbstractExceptionHandler
-
+from .parsing.lambda_function import lambda_handler
 
 class LaunchRequestHandler(AbstractRequestHandler):
     """Handler for skill launch."""
@@ -28,7 +28,16 @@ class IntentRequestHandler(AbstractRequestHandler):
         return is_request_type("IntentRequest")(handler_input)
 
     def handle(self, handler_input):
-        speech = "An interesting choice"
+
+        lda = lambda_handler(handler_input)
+
+        response = "Howdy neighbor"
+        # response = lda["response"]
+
+        #speech = "An interesting choice"
+        speech = response
+
+
 
         print("HANDLER INPUT PRINT\n:",handler_input)
 
