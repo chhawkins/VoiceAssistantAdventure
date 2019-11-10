@@ -12,6 +12,9 @@
 # below:
 .git
 .gitignore
+.idea
+idea/
+.idea/
 
 # Python pycache:
 __pycache__/

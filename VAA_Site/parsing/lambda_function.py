@@ -1,4 +1,6 @@
-from parseData import parse_data
+#stuff going on here
+
+from VAA_Site.parsing.parseData import parse_data
 
 
 def lambda_handler(event):

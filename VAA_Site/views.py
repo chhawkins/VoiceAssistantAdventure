@@ -7,5 +7,5 @@ from django.template import Context, loader
 
 
 def index(request):
-    template = loader.get_template("../index.html")
+    template = loader.get_template("VAA_Site/index.html")
     return HttpResponse(template.render())

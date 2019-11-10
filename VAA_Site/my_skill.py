@@ -3,7 +3,7 @@ from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.utils import is_request_type
 from ask_sdk_model.ui import SimpleCard
 from ask_sdk_core.dispatch_components import AbstractExceptionHandler
-from .parsing import lambda_function
+
 
 class LaunchRequestHandler(AbstractRequestHandler):
     """Handler for skill launch."""

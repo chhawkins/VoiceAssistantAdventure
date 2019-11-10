@@ -22,15 +22,15 @@ def make_format_dict(raw_input):
 
 
 def parse_data(text):
-    actions = open("actions.txt", "r").read()
+    actions = open("./actions.txt", "r").read()
 
-    recipients = open("recipients.txt", "r").read()
+    recipients = open("./recipients.txt", "r").read()
 
-    castables = open('castables.txt', 'r').read()
+    castables = open('./castables.txt', 'r').read()
 
-    throwables = open('throwables.txt', 'r').read()
+    throwables = open('./throwables.txt', 'r').read()
 
-    format_raw = open("format.txt", 'r').read()
+    format_raw = open("./ormat.txt", 'r').read()
 
     format_dict = make_format_dict(format_raw)
 
