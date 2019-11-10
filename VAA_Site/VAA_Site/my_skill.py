@@ -47,5 +47,3 @@ sb = SkillBuilder()
 sb.add_request_handler(LaunchRequestHandler())
 sb.add_request_handler(IntentRequestHandler())
 sb.add_exception_handler(AllExceptionHandler())
-
-skill = sb.create()

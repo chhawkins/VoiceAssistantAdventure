@@ -16,12 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django_ask_sdk.skill_adapter import SkillAdapter
-from .my_skill import skill
+from .my_skill import sb
 
-my_skill_view = SkillAdapter.as_view(skill=skill)
+my_skill_view = SkillAdapter.as_view(skill=sb.create())
 
 urlpatterns = [
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
-    path('/myskill', my_skill_view),
+    path('/', my_skill_view),
 ]
