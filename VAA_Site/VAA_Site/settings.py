@@ -25,7 +25,9 @@ SECRET_KEY = '0)44*h=5vd4z5-^frz#=q%35(t31)=4q+3rq%c80xg@%u^dvcq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.voice-assistant-adventure.online']
+ALLOWED_HOSTS = ['www.voice-assistant-adventure.online',
+                 'voice-assistant-adventure.online',
+                 'https://www.voice-assistant-adventure.online']
 
 
 # Application definition
