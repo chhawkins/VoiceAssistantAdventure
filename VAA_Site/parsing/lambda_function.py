@@ -1,4 +1,4 @@
-#stuff going on here
+# stuff going on here
 
 from VAA_Site.parsing.parseData import parse_data
 
@@ -14,15 +14,15 @@ def lambda_handler(event):
         return on_session_ended(event["request"], event["session"])
 
 
-def on_session_started(session_started_request):
+def on_session_started(session_started_request, session):
     print("Starting new session")
 
 
-def on_launch(launch_request):
+def on_launch(launch_request, session):
     return get_welcome_response()
 
 
-def on_intent(intent_request):
+def on_intent(intent_request, session):
     intent = intent_request["intent"]
     intent_name = intent_request["intent"]["name"]
 
@@ -36,7 +36,7 @@ def on_intent(intent_request):
         raise ValueError("Invalid intent")
 
 
-def on_session_ended(session_ended_request):
+def on_session_ended(session_ended_request, session):
     print("Ending session.")
     # Cleanup goes here...
 
