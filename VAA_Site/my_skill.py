@@ -19,7 +19,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
         speech = "Welcome to Voice Assistant Adventure, I will be your dungeon master.\n" \
                  "You begin in a musty dungeon cellar, what do you do?"
         handler_input.response_builder.speak(speech).set_card(
-            SimpleCard("Voice Assistant Adventure", speech)).set_should_end_session(
+            SimpleCard("Voice Assistant Adventure", "Welcome")).set_should_end_session(
             False)
         return handler_input.response_builder.response
 
