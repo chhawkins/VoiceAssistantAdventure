@@ -5,3 +5,4 @@ hit
 throw
 stab
 move
+look

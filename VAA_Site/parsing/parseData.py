@@ -30,7 +30,7 @@ def parse_data(text):
 
     throwables = open('./throwables.txt', 'r').read()
 
-    format_raw = open("./ormat.txt", 'r').read()
+    format_raw = open("./format.txt", 'r').read()
 
     format_dict = make_format_dict(format_raw)
 
@@ -59,9 +59,7 @@ def parse_data(text):
             action_classifier = blob.tags[index][0]
             continue
 
-    print(action, action_classifier, recipient, parameter)
-
     return[action, action_classifier, recipient, parameter]
 
 
-print(parse_data("attack"))
+print(parse_data("look around"))
