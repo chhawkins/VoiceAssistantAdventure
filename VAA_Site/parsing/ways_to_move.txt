@@ -1,0 +1,4 @@
+sprint
+run
+walk
+tip-toe

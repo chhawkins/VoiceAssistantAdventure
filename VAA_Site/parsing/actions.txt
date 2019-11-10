@@ -5,4 +5,11 @@ hit
 throw
 stab
 move
+walk
 look
+activate
+push
+listen
+sprint
+run
+tip-toe

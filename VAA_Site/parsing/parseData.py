@@ -30,6 +30,10 @@ def parse_data(text):
 
     throwables = open('VAA_Site/parsing/throwables.txt', 'r').read()
 
+    directions = open('VAA_Site/parsing/directions.txt', 'r').read()
+
+    ways_to_move = open('VAA_Site/parsing/ways_to_move.txt', 'r').read()
+
     format_raw = open("VAA_Site/parsing/format.txt", 'r').read()
 
     format_dict = make_format_dict(format_raw)
@@ -49,13 +53,21 @@ def parse_data(text):
         if blob.tags[index][1] == 'NN' and blob.tags[index][0] in recipients:
             recipient = blob.tags[index][0]
             continue
-        if (blob.tags[index][1] == 'VB' or blob.tags[index][1] == 'NN') and blob.tags[index][0] in actions:
+        if (blob.tags[index][1] == 'VB' or blob.tags[index][1] == 'NN' or blob.tags[index][1] == 'JJ') and blob.tags[index][0] in actions:
             action = blob.tags[index][0]
+            if action in ways_to_move:
+                action = 'move'
             continue
         if action == 'cast' and blob.tags[index][1] == 'NN' and blob.tags[index][0] in castables:
             action_classifier = blob.tags[index][0]
             continue
         if action == 'throw' and blob.tags[index][1] == 'NN' and blob.tags[index][0] in throwables:
+            action_classifier = blob.tags[index][0]
+            continue
+        if action == 'listen' and blob.tags[index][1] == 'NN' and blob.tags[index][0] in directions:
+            action_classifier = blob.tags[index][0]
+            continue
+        if action == 'move' and (blob.tags[index][1] == 'NN' or blob.tags[index][1] == 'NNS') and blob.tags[index][0] in directions:
             action_classifier = blob.tags[index][0]
             continue
 
