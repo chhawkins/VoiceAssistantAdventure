@@ -17,12 +17,11 @@ from django.contrib import admin
 from django.urls import include, path
 from django_ask_sdk.skill_adapter import SkillAdapter
 from VAA_Site.my_skill import sb
-from VAA_Site.views import index
 
 my_skill_view = SkillAdapter.as_view(skill=sb.create())
 
 urlpatterns = [
-    path('/', index, name='index'),
+    path('', include('pages.urls')),
     path('admin/', admin.site.urls),
     path('myskill/', my_skill_view, name='skill'),
 ]

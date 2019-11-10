@@ -13,9 +13,10 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
 
-        speech = "If I say this you should be shitting your pants"
+        speech = "Welcome to Voice Assistant Adventure, I will be your dungeon master.\n" \
+                 "You begin in a musty dungeon cellar, what do you do?"
         handler_input.response_builder.speak(speech).set_card(
-            SimpleCard("Holy Crap!", speech)).set_should_end_session(
+            SimpleCard("Voice Assistant Adventure", speech)).set_should_end_session(
             False)
         return handler_input.response_builder.response
 
@@ -27,7 +28,7 @@ class IntentRequestHandler(AbstractRequestHandler):
         return is_request_type("IntentRequest")(handler_input)
 
     def handle(self, handler_input):
-        speech = "I am replying to your intent and ending the session."
+        speech = "An interesting choice"
 
         print("HANDLER INPUT PRINT\n:",handler_input)
 
@@ -42,7 +43,7 @@ class AllExceptionHandler(AbstractExceptionHandler):
         return True
 
     def handle(self, handler_input, exception):
-        speech = "Sorry can you speak up asshole."
+        speech = "Sorry I could not hear you"
         handler_input.response_builder.speak(speech)
         return handler_input.response_builder.response
 
