@@ -1,3 +1,4 @@
 django
 ask-sdk-webservice-support
 django_ask_sdk
+textblob

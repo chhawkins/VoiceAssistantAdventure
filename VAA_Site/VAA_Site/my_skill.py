@@ -3,6 +3,7 @@ from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.utils import is_request_type
 from ask_sdk_model.ui import SimpleCard
 from ask_sdk_core.dispatch_components import AbstractExceptionHandler
+from .parsing import lambda_function
 
 class LaunchRequestHandler(AbstractRequestHandler):
     """Handler for skill launch."""
@@ -27,6 +28,10 @@ class IntentRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         speech = "I am replying to your intent and ending the session."
+
+        print("HANDLER INPUT PRINT\n:",handler_input)
+
+
         handler_input.response_builder.speak(speech).set_card(
             SimpleCard("Awesome", speech)).set_should_end_session(
             True)

@@ -1,4 +1,4 @@
-import parseData
+from parseData import parse_data
 
 
 def lambda_handler(event):
@@ -58,7 +58,7 @@ def get_welcome_response():
 
 def do_action(intent):
     session_attributes = {}
-    action = parseData.parse_data(intent['slots']['data']['value'])
+    action = parse_data(intent['slots']['data']['value'])
     test_string = " ".join(action)
     return build_response(session_attributes, build_speechlet_response("action taken", test_string, None, False))
 
