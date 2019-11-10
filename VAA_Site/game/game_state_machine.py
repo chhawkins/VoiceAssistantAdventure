@@ -6,7 +6,7 @@ states = {
          },
     'b':
         {'listen': ['left', 'right'],
-         'move': ['left', 'right']
+         'move': ['left', 'right'],
          }
 }
 
