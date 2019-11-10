@@ -7,11 +7,11 @@ def lambda_handler(event):
     if event['session']['new']:
         on_session_started({'requestId': event['request']['requestId']}, event['session'])
     if event["request"]["type"] == "LaunchRequest":
-        return on_launch(event["request"], event["session"])
+        return on_launch(event["request"])
     elif event["request"]["type"] == "IntentRequest":
-        return on_intent(event["request"], event["session"])
+        return on_intent(event["request"])
     elif event["request"]["type"] == "SessionEndedRequest":
-        return on_session_ended(event["request"], event["session"])
+        return on_session_ended(event["request"])
 
 
 def on_session_started(session_started_request, session):
