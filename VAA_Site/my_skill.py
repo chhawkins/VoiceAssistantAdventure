@@ -4,6 +4,8 @@ from ask_sdk_core.utils import is_request_type
 from ask_sdk_core.utils import get_slot_value
 from ask_sdk_model.ui import SimpleCard
 from ask_sdk_core.dispatch_components import AbstractExceptionHandler
+from VAA_Site.parsing.parseData import parse_data
+from VAA_Site.game.game_state_machine import perform_action
 from .parsing.lambda_function import lambda_handler
 
 
@@ -144,7 +146,8 @@ class IntentRequestHandler(AbstractRequestHandler):
         }
         """
         # return lambda_handler(temp_json)
-        speech = get_slot_value(handler_input, 'data')
+        data = parse_data(get_slot_value(handler_input, 'data'))
+        speech = perform_action(data[0], data[1], data[2], data[3])
         handler_input.response_builder.speak(speech).set_should_end_session(
             False)
         return handler_input.response_builder.response

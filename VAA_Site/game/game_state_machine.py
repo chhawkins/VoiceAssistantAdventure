@@ -2,7 +2,7 @@ states = {
     'a':
         {'look': ['bookcase', 'floor', ''],
          'activate': ['switch', 'book', 'bookcase'],
-         'walk': ['tunnel']
+         'move': ['tunnel', 'forward']
          },
     'b':
         {'listen': ['left', 'right'],
@@ -23,12 +23,13 @@ def action_legal(state, action, target):
     return target in states.get(state).get(action)
 
 
-def perform_action(state, action, action_modifier, target, parameter):
+def perform_action(action, action_modifier, target, parameter):
+    state = open('VAA_Site/game/state.txt', 'rw').read()
     if action_legal(state, action, target):
         if action == 'cast':
-            cast_text(action_modifier, target)
+            return cast_text(action_modifier, target)
         if action == 'look':
-            look_text(state, target)
+            return look_text(state, target)
 
 
 def cast_text(action_modifier, target):
