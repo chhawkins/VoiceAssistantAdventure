@@ -23,5 +23,5 @@ my_skill_view = SkillAdapter.as_view(skill=sb.create())
 urlpatterns = [
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
-    path('myskill/', my_skill_view, name='index'),
+    path('myskill/', my_skill_view, name='skill'),
 ]

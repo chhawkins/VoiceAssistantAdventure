@@ -1,8 +1,6 @@
 from ask_sdk_core.skill_builder import SkillBuilder
-from ask_sdk_core.handler_input import HandlerInput
 from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.utils import is_request_type
-from ask_sdk_model import Response
 from ask_sdk_model.ui import SimpleCard
 from ask_sdk_core.dispatch_components import AbstractExceptionHandler
 
@@ -13,6 +11,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
         return is_request_type("LaunchRequest")(handler_input)
 
     def handle(self, handler_input):
+
         speech = "If I say this you should be shitting your pants"
         handler_input.response_builder.speak(speech).set_card(
             SimpleCard("Holy Crap!", speech)).set_should_end_session(
@@ -39,7 +38,7 @@ class AllExceptionHandler(AbstractExceptionHandler):
 
     def handle(self, handler_input, exception):
         speech = "Sorry can you speak up asshole."
-        handler_input.response_builder.speak(speech).ask(speech)
+        handler_input.response_builder.speak(speech)
         return handler_input.response_builder.response
 
 sb = SkillBuilder()
