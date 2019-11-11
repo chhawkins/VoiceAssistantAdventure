@@ -83,7 +83,7 @@ def perform_action(action, action_modifier, target, parameter):
     file = open('VAA_Site/game/state.txt', 'r')
     state = file.read()
     file.close()
-    with open(r'path_open.pickle', 'rb') as input_file:
+    with open(r'VAA_Site/game/path_open.pickle', 'rb') as input_file:
         path_open = pickle.load(input_file)
 
     if action_legal(state, action, target):
